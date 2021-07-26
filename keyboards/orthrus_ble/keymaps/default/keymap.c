@@ -24,8 +24,6 @@ enum custom_keycodes {
     AD_WO_L = SAFE_RANGE, /* Start advertising without whitelist  */
     BLE_DIS,              /* Disable BLE HID sending              */
     BLE_EN,               /* Enable BLE HID sending               */
-    USB_DIS,              /* Disable USB HID sending              */
-    USB_EN,               /* Enable USB HID sending               */
     DELBNDS,              /* Delete all bonding                   */
     ADV_ID0,              /* Start advertising to PeerID 0        */
     ADV_ID1,              /* Start advertising to PeerID 1        */
@@ -84,9 +82,9 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT( 
 	KC_ESC,   KC_1,    KC_2,     KC_3,     KC_4,    KC_5,    	KC_6,    KC_7,    KC_8,    KC_9,     KC_0,     KC_MINS, \
     	KC_TAB,   KC_Q,    KC_W,     KC_E,     KC_R,    KC_T,    	KC_Y,    KC_U,    KC_I,    KC_O,     KC_P,     KC_LBRC, \
-    	KC_LGUI,  KC_A,    KC_S,     KC_D,     KC_F,    KC_G,    	KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,  KC_QUOT, \
-    	KC_LCTL,  KC_Z,    KC_X,     KC_C,     KC_V,    KC_B,    	KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_LALT,  KC_LCTL, \
-    		         ADJUST,    LOWER,  KC_BSPC, KC_LSFT,  		KC_ENT,  KC_SPC,  KC_RGUI, RAISE \
+    	KC_LCTL,  KC_A,    KC_S,     KC_D,     KC_F,    KC_G,    	KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,  KC_QUOT, \
+    	KC_LSFT,  KC_Z,    KC_X,     KC_C,     KC_V,    KC_B,    	KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_RALT,  KC_RSFT, \
+    		         ADJUST,     KC_LGUI,  RAISE, KC_SPC,  		KC_ENT,  LOWER,   KC_RALT, KC_BSPC \
   ),
 
   [_LOWER] = LAYOUT(
@@ -109,7 +107,7 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  	_______, ADV_ID0, ADV_ID1, ADV_ID2, ADV_ID3, ADV_ID4, 		_______, _______, _______, _______,  _______, _______, \
 	_______, DEL_ID0, DEL_ID1, DEL_ID2, DEL_ID3, DEL_ID4, 		KC_HOME, KC_PGDN, KC_PGUP, KC_END,   DELBNDS, KC_MUTE, \
 	_______, _______, _______, _______, _______, _______, 		KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, AD_WO_L, KC_VOLU, \
-	_______, _______, _______, _______, _______, _______, 		_______, _______, _______, _______,  ENT_SLP, KC_VOLD, \
+	_______, _______, _______, _______, _______, _______, 		_______, _______, BLE_EN,  BLE_DIS,  ENT_SLP, KC_VOLD, \
 			  _______, _______, _______, _______, 		_______, _______, _______, _______ \
 		  	  		  
  )
@@ -146,14 +144,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case AD_WO_L:
       restart_advertising_wo_whitelist();
       return false;
-    case USB_EN:
-      set_usb_enabled(true);
-      return false;
-      break;
-    case USB_DIS:
-      set_usb_enabled(false);
-      return false;
-      break;
     case BLE_EN:
       set_ble_enabled(true);
       return false;
