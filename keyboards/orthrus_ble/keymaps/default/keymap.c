@@ -44,7 +44,7 @@ enum custom_keycodes {
 extern keymap_config_t keymap_config;
 
 enum {
-  _QWERTY,
+ _QWERTY,
   _LOWER,
   _RAISE,
  _ADJUST,
@@ -72,7 +72,7 @@ uint16_t kf_timers[12];
 #define LAYER_TOGGLE_DELAY 300
 
 // Layer related keycodes
-#define ADJUST  MO(_ADJUST)
+#define ADJUST MO(_ADJUST)
 
 // Fillers to make layering more clear
 #define _______ KC_TRNS
@@ -80,36 +80,35 @@ uint16_t kf_timers[12];
 
 const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT( 
-	KC_ESC,   KC_1,    KC_2,     KC_3,     KC_4,    KC_5,    	KC_6,    KC_7,    KC_8,    KC_9,     KC_0,     KC_MINS, \
-    	KC_TAB,   KC_Q,    KC_W,     KC_E,     KC_R,    KC_T,    	KC_Y,    KC_U,    KC_I,    KC_O,     KC_P,     KC_LBRC, \
-    	KC_LCTL,  KC_A,    KC_S,     KC_D,     KC_F,    KC_G,    	KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,  KC_QUOT, \
-    	KC_LSFT,  KC_Z,    KC_X,     KC_C,     KC_V,    KC_B,    	KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_SLSH,  KC_RSFT, \
-    		         ADJUST,     KC_LGUI,  RAISE, KC_SPC,  		KC_ENT,  LOWER,   KC_RALT, KC_BSPC \
+    KC_ESC,   KC_1,    KC_2,     KC_3,     KC_4,    KC_5,     KC_6,    KC_7,    KC_8,    KC_9,     KC_0,     KC_MINS, \
+    KC_TAB,   KC_Q,    KC_W,     KC_E,     KC_R,    KC_T,     KC_Y,    KC_U,    KC_I,    KC_O,     KC_P,     KC_LBRC, \
+    KC_LCTL,  KC_A,    KC_S,     KC_D,     KC_F,    KC_G,     KC_H,    KC_J,    KC_K,    KC_L,     KC_SCLN,  KC_QUOT, \
+    KC_LSFT,  KC_Z,    KC_X,     KC_C,     KC_V,    KC_B,     KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_SLSH,  KC_RSFT, \
+                     ADJUST,     KC_LGUI,  RAISE, KC_SPC,     KC_ENT,  LOWER,   KC_RALT, KC_BSPC \
   ),
 
   [_LOWER] = LAYOUT(
-	_______, KF_1,    KF_2,    KF_3,    KF_4,       KF_5,  		KF_6,    KF_7,    KF_8,    KF_9,     KF_10,   KF_11,   \
-	_______, KC_LABK, KC_RABK, KC_LCBR, KC_RCBR, KC_PLUS, 		KC_AT,   KC_DQT,  _______, KC_GRAVE, KC_SLSH, KC_RBRC, \
-	_______, KC_EXLM, KC_EQL,  KC_LPRN, KC_RPRN, KC_MINS, 		KC_UNDS, KC_CIRC, KC_DLR,  KC_AMPR,  KC_PIPE, _______, \
-	_______, _______, KC_PERC, _______, _______, KC_ASTR, 		KC_HASH, _______, KC_COLN, KC_QUES,  KC_BSLS, _______, \
-			  _______, _______, _______, _______, 		_______, _______, _______, _______ \
+    _______, KF_1,    KF_2,    KF_3,    KF_4,       KF_5,     KF_6,    KF_7,    KF_8,    KF_9,     KF_10,   KF_11,   \
+    _______, KC_LABK, KC_RABK, KC_LCBR, KC_RCBR, KC_PLUS,     KC_AT,   KC_DQT,  _______, KC_GRAVE, KC_SLSH, KC_RBRC, \
+    _______, KC_EXLM, KC_EQL,  KC_LPRN, KC_RPRN, KC_MINS,     KC_UNDS, KC_CIRC, KC_DLR,  KC_AMPR,  KC_PIPE, _______, \
+    _______, _______, KC_PERC, _______, _______, KC_ASTR,     KC_HASH, _______, KC_COLN, KC_QUES,  KC_BSLS, _______, \
+                      _______, _______, _______, _______,     _______, _______, _______, _______ \
   ),
 
   [_RAISE] = LAYOUT(
-	_______, _______, _______, _______, _______, _______,        	_______, KC_P7,   KC_P8,   KC_P9,    _______, _______, \
-	_______, _______, _______, _______, _______, _______,        	_______, KC_P4,   KC_P5,   KC_P6,    _______, _______, \
-	_______, _______, _______, _______, _______, _______,		XXXXXXX, KC_P1,   KC_P2,   KC_P3,    KC_RGHT, XXXXXXX, \
-	_______, _______, _______, _______, _______, _______,        	XXXXXXX, KC_P0,   KC_PDOT, KC_PGUP,  KC_END,  XXXXXXX, \
-                          _______, _______, _______, _______,		_______, _______, _______, _______ \
+    _______, _______, _______, _______, _______, _______,     _______, KC_P7,   KC_P8,   KC_P9,    _______, _______, \
+    _______, _______, _______, _______, _______, _______,     _______, KC_P4,   KC_P5,   KC_P6,    _______, _______, \
+    _______, _______, _______, _______, _______, _______,     XXXXXXX, KC_P1,   KC_P2,   KC_P3,    KC_RGHT, XXXXXXX, \
+    _______, _______, _______, _______, _______, _______,     XXXXXXX, KC_P0,   KC_PDOT, KC_PGUP,  KC_END,  XXXXXXX, \
+                      _______, _______, _______, _______,     _______, _______, _______, _______ \
   ),
 
   [_ADJUST] = LAYOUT (
- 	_______, ADV_ID0, ADV_ID1, ADV_ID2, ADV_ID3, ADV_ID4, 		_______, _______, _______, _______,  _______, _______, \
-	_______, DEL_ID0, DEL_ID1, DEL_ID2, DEL_ID3, DEL_ID4, 		KC_HOME, KC_PGDN, KC_PGUP, KC_END,   DELBNDS, KC_MUTE, \
-	_______, _______, _______, _______, _______, _______, 		KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, AD_WO_L, KC_VOLU, \
-	_______, _______, _______, _______, _______, _______, 		_______, _______, BLE_EN,  BLE_DIS,  ENT_SLP, KC_VOLD, \
-			  _______, _______, _______, _______, 		_______, _______, _______, _______ \
-		  	  		  
+    _______, ADV_ID0, ADV_ID1, ADV_ID2, ADV_ID3, ADV_ID4,     _______, _______, _______, _______,  _______, _______, \
+    _______, DEL_ID0, DEL_ID1, DEL_ID2, DEL_ID3, DEL_ID4,     KC_HOME, KC_PGDN, KC_PGUP, KC_END,   DELBNDS, KC_MUTE, \
+    _______, _______, _______, _______, _______, _______,     KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, AD_WO_L, KC_VOLU, \
+    _______, _______, _______, _______, _______, _______,     _______, _______, BLE_EN,  BLE_DIS,  ENT_SLP, KC_VOLD, \
+                      _______, _______, _______, _______,     _______, _______, _______, _______ \
  )
 };
 
