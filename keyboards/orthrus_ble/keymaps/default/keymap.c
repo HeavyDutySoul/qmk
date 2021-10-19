@@ -44,10 +44,10 @@ enum custom_keycodes {
 extern keymap_config_t keymap_config;
 
 enum {
- _QWERTY,
+  _QWERTY,
   _LOWER,
   _RAISE,
- _ADJUST,
+  _ADJUST,
 };
 
 // Macros
@@ -88,26 +88,26 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_LOWER] = LAYOUT(
-    _______, KF_1,    KF_2,    KF_3,    KF_4,       KF_5,     KF_6,    KF_7,    KF_8,    KF_9,     KF_10,   KF_11,   \
-    _______, KC_LABK, KC_RABK, KC_LCBR, KC_RCBR, KC_PLUS,     KC_AT,   KC_DQT,  _______, KC_GRAVE, KC_SLSH, KC_RBRC, \
-    _______, KC_EXLM, KC_EQL,  KC_LPRN, KC_RPRN, KC_MINS,     KC_UNDS, KC_CIRC, KC_DLR,  KC_AMPR,  KC_PIPE, _______, \
-    _______, _______, KC_PERC, _______, _______, KC_ASTR,     KC_HASH, _______, KC_COLN, KC_QUES,  KC_BSLS, _______, \
+    KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,       KC_F6,    KC_F7,  KC_F8,   KC_F9,   KC_F10,   KF_11,   \
+    _______, KC_LABK, KC_RABK, KC_LCBR, KC_RCBR, KC_PLUS,     KC_AT,   KC_DQT,  _______, _______, KC_SLSH,  _______, \
+    KC_CAPS, KC_EXLM, KC_EQL,  KC_LPRN, KC_RPRN, KC_MINS,     KC_UNDS, KC_CIRC, KC_DLR,  KC_AMPR, KC_PIPE,  _______, \
+    _______, _______, KC_PERC, _______, _______, KC_ASTR,     KC_HASH, _______, KC_COLN, KC_QUES, _______,  _______, \
                       _______, _______, _______, _______,     _______, _______, _______, _______ \
   ),
 
   [_RAISE] = LAYOUT(
-    _______, _______, _______, _______, _______, _______,     _______, KC_P7,   KC_P8,   KC_P9,    _______, _______, \
-    _______, _______, _______, _______, _______, _______,     _______, KC_P4,   KC_P5,   KC_P6,    _______, _______, \
-    _______, _______, _______, _______, _______, _______,     XXXXXXX, KC_P1,   KC_P2,   KC_P3,    KC_RGHT, XXXXXXX, \
-    _______, _______, _______, _______, _______, _______,     XXXXXXX, KC_P0,   KC_PDOT, KC_PGUP,  KC_END,  XXXXXXX, \
+    _______, _______, _______, _______, _______, _______,     XXXXXXX, KC_7,    KC_8,    KC_9,     _______, KC_EQL,  \
+    _______, _______, _______, _______, _______, _______,     KC_PSCR, KC_4,    KC_5,    KC_6,     _______, KC_RBRC, \
+    _______, _______, _______, _______, _______, _______,     KC_INS,  KC_1,    KC_2,    KC_3,     KC_RGHT, XXXXXXX, \
+    _______, _______, _______, _______, _______, _______,     KC_DEL,  KC_0,    XXXXXXX, XXXXXXX,  KC_END,  XXXXXXX, \
                       _______, _______, _______, _______,     _______, _______, _______, _______ \
   ),
 
   [_ADJUST] = LAYOUT (
     _______, ADV_ID0, ADV_ID1, ADV_ID2, ADV_ID3, ADV_ID4,     _______, _______, _______, _______,  _______, _______, \
-    _______, DEL_ID0, DEL_ID1, DEL_ID2, DEL_ID3, DEL_ID4,     KC_HOME, KC_PGDN, KC_PGUP, KC_END,   DELBNDS, KC_MUTE, \
-    _______, _______, _______, _______, _______, _______,     KC_LEFT, KC_DOWN, KC_UP,   KC_RIGHT, AD_WO_L, KC_VOLU, \
-    _______, _______, _______, _______, _______, _______,     _______, _______, BLE_EN,  BLE_DIS,  ENT_SLP, KC_VOLD, \
+    _______, DEL_ID0, DEL_ID1, DEL_ID2, DEL_ID3, DEL_ID4,     KC_HOME, KC_PGDN, KC_PGUP, KC_END,   DELBNDS, KC_BSLS, \
+    _______, _______, _______, _______, _______, _______,     KC_END,  KC_LEFT, KC_DOWN, KC_UP,    KC_RIGHT,AD_WO_L, \
+    _______, _______, _______, _______, _______, _______,     _______, _______, BLE_EN,  BLE_DIS,  ENT_SLP, XXXXXXX, \
                       _______, _______, _______, _______,     _______, _______, _______, _______ \
  )
 };
@@ -197,27 +197,27 @@ static void m_handle_kf (keyrecord_t *record, uint8_t id) {
   if (record->event.pressed) {
     kf_timers[code] = timer_read ();
   } else {
-    uint8_t kc_base;
+//  uint8_t kc_base;
     uint8_t long_press = (kf_timers[code] && timer_elapsed (kf_timers[code]) > TAPPING_TERM);
 
     kf_timers[code] = 0;
 
     switch(id){
-      case KF_1 ... KF_10:
-        if (long_press) {
-          // Long press
-          kc_base = KC_F1;
-        } else {
-          kc_base = KC_1;
-        }
-        code += kc_base;
-        break;
+//      case KF_1 ... KF_10:
+//        if (long_press) {
+//          // Long press
+//          kc_base = KC_F1;
+//        } else {
+//         kc_base = KC_1;
+//      }
+//        code += kc_base;
+//        break;
       case KF_11:
-        code = long_press ? KC_F11 : KC_ESC;
-        break;
-      case KF_12:
-        code = long_press ? KC_F12 : KC_EQUAL;
-        break;
+        code = long_press ? KC_F11 : KC_F12;
+      break;
+//    case KF_12:
+//       code = long_press ? KC_F12 : KC_EQUAL;
+//      break;
     }
     register_code (code);
     unregister_code (code);
