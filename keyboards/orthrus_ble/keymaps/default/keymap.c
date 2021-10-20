@@ -89,7 +89,7 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT(
     KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,     KC_F5,     KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,   KF_11,   \
-    KC_TILD, KC_AT    KC_HASH, KC_DLR,  KC_CIRC, KC_AMPR,     _______, _______, _______, _______,  _______,  _______, \
+    KC_TILD, KC_AT,   KC_HASH, KC_DLR,  KC_CIRC, KC_AMPR,     _______, _______, _______, _______,  _______,  _______, \
     KC_CAPS, KC_LABK, KC_RABK, KC_LCBR, KC_RCBR, KC_COLN,     _______, _______, _______, _______,  _______,  _______, \
     KC_QUES, KC_UNDS, KC_DQT,  KC_LPRN, KC_RPRN, KC_PIPE,     _______, _______, _______, _______,  _______,  _______, \
                       _______, _______, _______, _______,     _______, _______, _______, _______ \
