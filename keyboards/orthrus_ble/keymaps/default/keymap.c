@@ -47,7 +47,7 @@ enum {
   _QWERTY,
   _LOWER,
   _RAISE,
-  _ADJUST,
+  _ADJUST
 };
 
 // Macros
@@ -63,7 +63,7 @@ enum {
   KF_9,
   KF_10,
   KF_11,
-  KF_12,
+  KF_12
 };
 
 uint16_t kf_timers[12];
@@ -88,7 +88,7 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_LOWER] = LAYOUT(
-    KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,     KC_F5,     KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,   KF_11,   \
+    KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,     KC_F5,     KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,   M(KF_11),\
     KC_TILD, KC_AT,   KC_HASH, KC_DLR,  KC_CIRC, KC_AMPR,     _______, _______, _______, _______,  _______,  _______, \
     KC_CAPS, KC_LABK, KC_RABK, KC_LCBR, KC_RCBR, KC_COLN,     _______, _______, _______, _______,  _______,  _______, \
     KC_QUES, KC_UNDS, KC_DQT,  KC_LPRN, KC_RPRN, KC_PIPE,     _______, _______, _______, _______,  _______,  _______, \
@@ -98,14 +98,14 @@ const uint16_t keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_RAISE] = LAYOUT(
     _______, _______, _______, _______, _______, _______,     XXXXXXX, KC_7,    KC_8,    KC_9,     _______,  KC_EQL,  \
     _______, _______, _______, _______, _______, _______,     KC_PSCR, KC_4,    KC_5,    KC_6,     _______,  KC_RBRC, \
-    _______, _______, _______, _______, _______, _______,     KC_INS,  KC_1,    KC_2,    KC_3,     KC_HOME,  XXXXXXX, \
-    _______, _______, _______, _______, _______, _______,     KC_DEL,  KC_0,    KC_LT,   KC_GT,    KC_END,   _______, \
+    _______, _______, _______, _______, _______, _______,     KC_INS,  KC_1,    KC_2,    KC_3,     _______,  _______, \
+    KC_LSFT, _______, _______, _______, _______, _______,     KC_DEL,  KC_0,    KC_DQT,  KC_LT,    KC_GT,    _______, \
                       _______, _______, _______, _______,     _______, _______, _______, _______ \
   ),
 
   [_ADJUST] = LAYOUT (
     _______, ADV_ID0, ADV_ID1, ADV_ID2, ADV_ID3, ADV_ID4,     _______, _______, _______, _______,  _______,  _______, \
-    _______, DEL_ID0, DEL_ID1, DEL_ID2, DEL_ID3, DEL_ID4,     _______, _______, KC_PGDN, KC_PGUP,  _______,  KC_BSLS, \
+    _______, DEL_ID0, DEL_ID1, DEL_ID2, DEL_ID3, DEL_ID4,     _______, KC_HOME, KC_PGDN, KC_PGUP,  KC_END,   KC_BSLS, \
     _______, _______, _______, _______, _______, DELBNDS,     _______, KC_LEFT, KC_DOWN, KC_UP,    KC_RGHT,  _______, \
     _______, _______, BLE_EN,  BLE_DIS, ENT_SLP, AD_WO_L,     _______, _______, _______, _______,  _______,  _______, \
                       _______, _______, _______, _______,     _______, _______, _______, _______ \
