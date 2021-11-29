@@ -8,11 +8,11 @@
 #define ENABLE_STARTUP_ADV_NOLIST
 
 #define MATRIX_ROW_PINS { NO_PIN }
-#define MATRIX_COL_PINS { 17, 13, 9,  4, 0, 29, \
-		          18, 14, 10, 5, 1, 28, \
-		          19, 15, 11, 6, 2, 25, \
-		          20, 16, 12, 7, 3, 24, \
-				      8,30, 23, 22 \
-			}
+#define MATRIX_COL_PINS { PIN17, PIN13, PIN9, PIN4, PIN0, PIN29, \
+                          PIN18, PIN14, PIN10,PIN5, PIN1, PIN28, \
+                          PIN19, PIN15, PIN11,PIN6, PIN2, PIN25, \
+                          PIN20, PIN16, PIN12,PIN7, PIN3, PIN24, \
+                                              PIN8, PIN30,PIN23, PIN22 \
+                        }
 
 #define IS_LEFT_HAND  true

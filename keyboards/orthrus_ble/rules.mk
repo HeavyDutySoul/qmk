@@ -1,5 +1,4 @@
-
-DEFAULT_FOLDER = ebasosis_ble/master
+DEFAULT_FOLDER = orthrus_ble/master
 
 NRF_DEBUG = no
 
@@ -8,9 +7,9 @@ MCU_SERIES = NRF52840
 
 NRFSDK_ROOT = ./NRF5_SDK
 
-MOUSEKEY_ENABLE = yes	# Mouse keys
-EXTRAKEY_ENABLE = yes	# Audio control and System control
-CONSOLE_ENABLE = no	# Console for debug
+MOUSEKEY_ENABLE = yes # Mouse keys
+EXTRAKEY_ENABLE = yes # Audio control and System control
+CONSOLE_ENABLE = no # Console for debug
 COMMAND_ENABLE = no     # Commands for debug and configuration
 SLEEP_LED_ENABLE = no   # Breathing sleep LED during USB suspend
 NKRO_ENABLE = no        # USB Nkey Rollover
