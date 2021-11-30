@@ -206,7 +206,6 @@ const uint8_t MouseReport[] = {
 }
 
 static bool auto_connection_check = false;
-static int auto_connection_check_cnt = 0;
 
 /**
  * @brief User event handler, HID mouse
@@ -575,12 +574,12 @@ extern bool app_usbd_hid_kbd_led_state_get(app_usbd_hid_kbd_t const * p_kbd,
                                            app_usbd_hid_kbd_led_t     led);
 extern uint16_t keyboard_led_stats;
 static void kbd_status(void) {
-	uint8_t led=0;
-	led += app_usbd_hid_kbd_led_state_get(&m_app_hid_kbd, APP_USBD_HID_KBD_LED_NUM_LOCK) ? APP_USBD_HID_KBD_LED_NUM_LOCK : 0;
-	led += app_usbd_hid_kbd_led_state_get(&m_app_hid_kbd, APP_USBD_HID_KBD_LED_CAPS_LOCK) ? APP_USBD_HID_KBD_LED_CAPS_LOCK : 0;
-	led += app_usbd_hid_kbd_led_state_get(&m_app_hid_kbd, APP_USBD_HID_KBD_LED_SCROLL_LOCK) ? APP_USBD_HID_KBD_LED_SCROLL_LOCK : 0;
-	led += app_usbd_hid_kbd_led_state_get(&m_app_hid_kbd, APP_USBD_HID_KBD_LED_COMPOSE) ? APP_USBD_HID_KBD_LED_COMPOSE : 0;
-	led += app_usbd_hid_kbd_led_state_get(&m_app_hid_kbd, APP_USBD_HID_KBD_LED_KANA) ? APP_USBD_HID_KBD_LED_KANA : 0;
+  uint8_t led=0;
+  led += app_usbd_hid_kbd_led_state_get(&m_app_hid_kbd, APP_USBD_HID_KBD_LED_NUM_LOCK) ? APP_USBD_HID_KBD_LED_NUM_LOCK : 0;
+  led += app_usbd_hid_kbd_led_state_get(&m_app_hid_kbd, APP_USBD_HID_KBD_LED_CAPS_LOCK) ? APP_USBD_HID_KBD_LED_CAPS_LOCK : 0;
+  led += app_usbd_hid_kbd_led_state_get(&m_app_hid_kbd, APP_USBD_HID_KBD_LED_SCROLL_LOCK) ? APP_USBD_HID_KBD_LED_SCROLL_LOCK : 0;
+  led += app_usbd_hid_kbd_led_state_get(&m_app_hid_kbd, APP_USBD_HID_KBD_LED_COMPOSE) ? APP_USBD_HID_KBD_LED_COMPOSE : 0;
+  led += app_usbd_hid_kbd_led_state_get(&m_app_hid_kbd, APP_USBD_HID_KBD_LED_KANA) ? APP_USBD_HID_KBD_LED_KANA : 0;
     keyboard_led_stats = led;
 }
 
@@ -744,16 +743,20 @@ int usbd_enable(void) {
 
 void usbd_process(void) {
   while (app_usbd_event_queue_process()) {
+
+#ifndef NRF_SEPARATE_KEYBOARD_SLAVE
+    static int auto_connection_check_cnt = 0;
     if (auto_connection_check) {
       if (auto_connection_check_cnt > 100) {
         auto_connection_check = false;
+        auto_connection_check_cnt = 0;
         NRF_LOG_DEBUG("auto_connection_check!");
         NRF_LOG_DEBUG("nrf_drv_usbd_is_started: %d", nrf_drv_usbd_is_started());
         NRF_LOG_DEBUG("nrf_drv_usbd_bus_suspend_check: %d", nrf_drv_usbd_bus_suspend_check());
         if (nrf_drv_usbd_is_started()) {
           if (!get_usb_enabled()) {
             if (!nrf_drv_usbd_bus_suspend_check()) { // connect to USB HOST
-              select_usb(true);
+              select_usb();
               NRF_LOG_DEBUG("USB send enabled");
             } else { // connect to CHARGER
               if (!get_ble_enabled()) {
@@ -772,6 +775,8 @@ void usbd_process(void) {
         auto_connection_check_cnt++;
       }
     }
+#endif
+
     continue;/* Nothing to do */
   }
   cli_exec();
