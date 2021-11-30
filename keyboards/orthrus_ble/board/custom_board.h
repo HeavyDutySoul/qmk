@@ -49,27 +49,27 @@ extern "C" {
 
 #define GPIO(port, pin) ((port << 5) | pin)
 
-#define PIN0 GPIO(0,00)
-#define PIN1 GPIO(0,01)
-#define PIN2 GPIO(0,04)
-#define PIN3 GPIO(0,06)
-#define PIN4 GPIO(0, 8)
-#define PIN5 GPIO(1, 9)
-#define PIN6 GPIO(0,05)
-#define PIN7 GPIO(0,07)
-#define PIN8 GPIO(1, 8)
+#define PIN0 GPIO(0,0)
+#define PIN1 GPIO(0,1)
+#define PIN2 GPIO(0,4)
+#define PIN3 GPIO(0,6)
+#define PIN4 GPIO(0,8)
+#define PIN5 GPIO(1,9)
+#define PIN6 GPIO(0,5)
+#define PIN7 GPIO(0,7)
+#define PIN8 GPIO(1,8)
 #define PIN9 GPIO(0,11)
 #define PIN10 GPIO(0,12)
-#define PIN11 GPIO(1,03)
-#define PIN12 GPIO(1,01)
+#define PIN11 GPIO(1,3)
+#define PIN12 GPIO(1,1)
 #define PIN13 GPIO(0,14)
 #define PIN14 GPIO(0,13)
 #define PIN15 GPIO(0,15)
 #define PIN16 GPIO(0,17)
 #define PIN17 GPIO(0,24)
-#define PIN18 GPIO(1,02)
-#define PIN19 GPIO(1,05)
-#define PIN20 GPIO(1,07)
+#define PIN18 GPIO(1,2)
+#define PIN19 GPIO(1,5)
+#define PIN20 GPIO(1,7)
 #define PIN21 GPIO(1,10)
 #define PIN22 GPIO(1,11)
 #define PIN23 GPIO(1,12)
@@ -78,9 +78,6 @@ extern "C" {
 #define PIN28 GPIO(0,31)
 #define PIN29 GPIO(0,30)
 #define PIN30 GPIO(0,27)
-
-
-
 
 //#define NRF_LOG_ENABLED 0
 //#define NRF_LOG_BACKEND_SERIAL_USES_UART 0
