@@ -79,13 +79,11 @@ extern "C" {
 #define PIN29 GPIO(0,30)
 #define PIN30 GPIO(0,27)
 
-//#define NRF_LOG_ENABLED 0
-//#define NRF_LOG_BACKEND_SERIAL_USES_UART 0
+//#define NRF_LOG_ENABLED 1
+//#define NRF_LOG_BACKEND_SERIAL_USES_UART 1
 //#define NRF_LOG_BACKEND_SERIAL_UART_TX_PIN 5
 //#define NRF_LOG_BACKEND_UART_TX_PIN 8
 //#define DEBUG
-
-#define NO_PIN (~0)
 
 // Low frequency clock source to be used by the SoftDevice
 #ifdef S210

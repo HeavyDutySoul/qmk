@@ -7,7 +7,7 @@
 
 #define ENABLE_STARTUP_ADV_NOLIST
 
-#define MATRIX_ROW_PINS { NO_PIN }
+#define MATRIX_ROW_PINS {  }
 #define MATRIX_COL_PINS { PIN17, PIN13, PIN9, PIN4, PIN0, PIN29, \
                           PIN18, PIN14, PIN10,PIN5, PIN1, PIN28, \
                           PIN19, PIN15, PIN11,PIN6, PIN2, PIN25, \
