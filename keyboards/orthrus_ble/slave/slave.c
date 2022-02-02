@@ -6,7 +6,10 @@
 #include "bootloader.h"
 
 #include "nrf_power.h"
+#include "nrf_gpio.h"
 #include "nrf.h"
+
+extern const uint32_t row_pins[THIS_DEVICE_ROWS];
 
 void unselect_rows(void);
 void select_row(uint8_t row);
@@ -14,7 +17,7 @@ matrix_row_t read_cols(void);
 
 static bool bootloader_flag = false;
 
-void matrix_init_user() {
+void matrix_init_kb() {
   select_row(0);
   wait_us(50);
   matrix_row_t row = read_cols();
@@ -24,11 +27,13 @@ void matrix_init_user() {
   } else if (row == 0b10) {
     bootloader_flag = true;
   }
+  matrix_init_user();
 }
 
-void matrix_scan_user() {
+void matrix_scan_kb() {
  static int cnt;
  if (bootloader_flag && cnt++==500) {
    bootloader_jump();
  }
+ matrix_scan_user();
 }
